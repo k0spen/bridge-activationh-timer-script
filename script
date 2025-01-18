@@ -1,0 +1,27 @@
+local part1 = workspace.button1.Head -- button
+local bridgeforone = script.Parent  -- the bridge itself
+local timerLabel = workspace.bridgeforone1.BillboardGui.timer  --timer above bridge
+
+
+print(timerLabel.Text)
+local duration = 5 -- change the duration of the timer as needed
+print(duration)
+
+
+
+
+
+part1.Touched:Connect(function(otherPart)
+		timerLabel.Visible = true 
+		bridgeforone.Transparency = 0 -- you can see the bridge
+		bridgeforone.CanCollide = true
+		--timerScript.Enabled = true -- start the timer script
+		for i = duration, 0, -1 do --let the character collide and see the bridge for the chosen duration time
+			timerLabel.Text = tostring(i) 
+			print(i)
+			wait(1) 
+	end
+	timerLabel.Text = "" -- hide duration
+	bridgeforone.Transparency = 0.5 -- reset the bridge transparency
+	bridgeforone.CanCollide = false -- fall right through
+end)
